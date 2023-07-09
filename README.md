@@ -19,7 +19,7 @@ To get started with the project, follow the steps below:
 
 2. Navigate to the project directory:
 
-    cd Task-Manager-App
+        cd Task-Manager-App
 
 3. Install the dependencies:
 
