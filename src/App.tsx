@@ -1,26 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { Task } from "./types";
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
+import "./components/styles.css";
 
-function App() {
+const App: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = (task: Task) => {
+    setTasks((prevTasks) => [...prevTasks, task]);
+    setShowDropdown(true);
+  };
+
+  const deleteTask = (id: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  };
+
+  const editTaskHandler = (editedTask: Task) => {
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.map((task) =>
+        task.id === editedTask.id ? editedTask : task
+      );
+      return updatedTasks;
+    });
+    setShowDropdown(true);
+  };
+
+  const updateTaskStatus = (id: number, status: string) => {
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.map((task) =>
+        task.id === id ? { ...task, status } : task
+      );
+      return updatedTasks;
+    });
+  };
+
+  const deleteAllTasks = () => {
+    setTasks([]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Task Manager</h1>
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
+        <TaskForm onSubmit={addTask} onDeleteAll={deleteAllTasks} />
+      </div>
+      <TaskList
+        tasks={tasks}
+        onUpdateStatus={updateTaskStatus}
+        onDelete={deleteTask}
+        onEdit={editTaskHandler}
+      />
     </div>
   );
-}
+};
 
 export default App;

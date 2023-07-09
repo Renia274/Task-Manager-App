@@ -1,0 +1,17 @@
+/* Styles for the button container */
+.button-container {
+  display: flex; // Display the container as a flex container
+  align-items: center; // Center the items vertically within the container
+  margin-bottom: 1rem; // Add a bottom margin of 1rem
+}
+
+/* Styles for the delete all button */
+.delete-all-button {
+  background-color: red; // Set the background color to red
+  color: white; // Set the text color to white
+  padding: 0.5rem; // Add padding of 0.5rem
+  border: none; // Remove the border
+  margin-left: 1rem; // Add left margin of 1rem
+  height: fit-content; // Adjust the height to fit the content
+  margin-top: 0; // Remove the top margin
+}
