@@ -15,7 +15,7 @@ To get started with the project, follow the steps below:
 
 1. Clone the repository:
 
-    git clone https://github.com/Renia274/Task-Manager-App.git
+        git clone https://github.com/Renia274/Task-Manager-App.git
 
 2. Navigate to the project directory:
 
