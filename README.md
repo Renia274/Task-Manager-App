@@ -1,6 +1,7 @@
 Task Manager App
 
 This project is a simple task manager application built using React.
+
 Features
 
     Add new tasks with a title, description, and status.
