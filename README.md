@@ -1,8 +1,8 @@
-Task Manager App
+## Task Manager App
 
 This project is a simple task manager application built using React.
 
-Features
+## Features
 
     Add new tasks with a title, description, and status.
     Edit existing tasks, including updating the title, description, and status.
@@ -10,7 +10,7 @@ Features
     Delete all tasks at once.
     Update the status of tasks between "In Progress" and "Completed".
 
-Getting Started
+## Getting Started
 
 To get started with the project, follow the steps below:
 
